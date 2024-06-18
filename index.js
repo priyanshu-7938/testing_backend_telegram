@@ -2,13 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const TelegramBot = require('node-telegram-bot-api');
 const { v4: uuidv4 } = require('uuid');
+const dotenv = require("dotenv");
 const cors = require("cors");
+
+dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-
-const BOT_TOKEN = '7451287836:AAHAQpQgQliecXVIUBVbxmGpxxfc0e28i2w';
+const BOT_TOKEN = process.env.BOT_TOKEN;
 const BOT_USERNAME = 'testing0098bot';
 const bot = new TelegramBot(BOT_TOKEN, { polling: true });
 console.log(BOT_USERNAME)
